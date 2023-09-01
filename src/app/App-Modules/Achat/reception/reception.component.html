@@ -1,0 +1,67 @@
+<div class="reception  m-5 bg-slate-50 ">
+    <h1 class="ont-medium font-serif text-2xl he p-4">Réception</h1>
+    <div class="containner-reception mt-12">
+      <div class="heder-container flex justify-between">
+<div class="fournisseur flex flex-col gap-y-1">
+<div class="flex"><label for="ref" class="text-sm font-semibold pr-1 w-40">Fournisseur Ref</label> <input type="text" name="ref" class="border border-solid border-black hover:border-2 rounded-sm h-5 "></div>
+<div class="flex"><label for="name-four"  class="text-sm font-semibold pr-1 w-40">Nom Fournisseur</label> <input type="text" name="name-four"  class="border border-solid border-black hover:border-2 rounded-sm h-5"></div>
+</div>
+<div class="reception-inf flex flex-col gap-y-1">
+  <div class="flex"><label for="recep-ref" class="text-sm font-semibold pr-1 w-40">reference</label> <input type="text" name="recep-ref"  class="border border-solid border-black hover:border-2 rounded-sm h-5"></div>
+    <div class="flex"><label for="Datr-Doc" class="text-sm font-semibold pr-1 w-40">Date Document</label> <input type="text" name="Datr-Doc"  class="border border-solid border-black hover:border-2 rounded-sm h-5"></div>
+    <div class="flex"><label for="Date-ech" class="text-sm font-semibold pr-1 w-40"> Date echeance</label> <input type="text" name="Date-ech"  class="border border-solid border-black hover:border-2 rounded-sm h-5"></div>
+   </div>
+   </div>
+    <div class="choice-agence flex justify-center mt-9">
+        <label for="browser" class="text-sm font-semibold pr-2">Agence</label>
+<input list="browsers" name="browser" id="browser"  class="border border-solid border-black hover:border-2 rounded-sm h-5">
+
+<datalist id="browsers">
+  <option value="casablanca" >
+  <option value="Rabat" >
+  <option value="Marrakech" >
+
+</datalist>
+    </div>
+    <div class="table-reception">
+        <table class="table-auto">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Num d'articles</th>
+                <th>Description</th>
+                <th>Code Unité</th>
+                <th>Qantité</th>
+                <th>Prix Unitaire</th>
+                <th>Code Tva</th>
+                <th>Prix TTC</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+             <td></td>
+             <td></td>
+             <td></td>
+             <td></td>
+             <td></td>
+             <td></td>
+             <td></td>
+             <td></td>
+              </tr>
+             
+            </tbody>
+          </table>
+          <div class="footer-table">
+            <div class="remarque"><label for="remarque-recep">Remarque</label> <input type="text" name="remarque-recep"></div>
+            <div class="calcule-recep ">
+              <label for="recep-ref">Total Ht</label> <input type="text" name="recep-ref">
+              <label for="recep-ref">Remise</label> <input type="text" name="recep-ref">
+              <label for="recep-ref">Fret</label> <input type="text" name="recep-ref">
+              <label for="recep-ref">TVA/TAXES</label> <input type="text" name="recep-ref">
+              <label for="recep-ref">TTC</label> <input type="text" name="recep-ref">
+            </div>
+          </div>
+    </div>
+</div>
+    </div>
+

@@ -1,0 +1,86 @@
+<div class="modal-background bg-black bg-opacity-50 fixed inset-0" [ngClass]="{'hidden':!x}">
+    <div class="modal-container w-2/4 mx-auto my-auto bg-white my-9 px-8 py-1 rounded ">
+  >
+    <div class="header-modal ">
+        <div class="flex justify-between pb-6">
+        <span class="material-symbols-outlined border p-1 rounded">
+            apartment
+            </span>
+        <span class="material-symbols-outlined ">
+            close
+            </span></div>
+            <div class="description">
+                <h1 class="font-semibold">Créer un nouveau Fournisseur</h1>
+                <p class="font-thin">Remplire les case suivantes</p>
+            </div>
+        </div>
+  
+   <div class="contente-modal">
+    <form action="" class="grid grid-cols-2 gap-4 ">
+        <div class="case ">
+            <label for="" class="">Nom d'Entreprise</label>
+            <input type="text" class="">
+            <span *ngIf="x">*Le champs est obligatoire</span>
+            <span *ngIf="x">*Le Nom doit etre majiscule ne contiet pas des accent ou des tiré</span>
+            <span *ngIf="x">*Le Nom ne doit pas passé 20 caractére</span>
+        </div>
+        <div class="case">
+            <label for="">Ice</label>
+            <input type="text">
+            <span *ngIf="x">*Le champs est obligatoire</span>
+            <span *ngIf="x">*L'Ice ne doit pas passé 20 caractére et pas moins de 14 caractére</span>
+        </div>
+        <div class="case">
+            <label for="">Télephone</label>
+            <input type="text">
+            <span *ngIf="x">*Le champs est obligatoire</span>
+            <span *ngIf="x">*Le numéro de télephone ne doit pas contenir des lettres</span>
+        </div>
+        <div class="case">
+            <label for="">Agences</label>
+            <div class="case-to-dropdown border flex justify-between border-slate-300  h-9 w-64 rounded-md text-sm shadow-sm placeholder-slate-400 focus:border-2 outline-0
+            ">
+                <span>Selectioné les agence</span>
+                <span class="material-symbols-outlined">
+                    expand_more
+                    </span>
+            </div>
+            <ng-container *ngFor="let dataType of dataTypes">
+                <div class="px-3 py-3 rounded-lg hover:main-bg-color my-1 w-64" style="background-color: rgb(196, 196, 196); color: rgb(255, 11, 11);" [ngClass]="{'hidden':!x}"
+                  >{{ dataType}}
+                </div>
+              </ng-container>
+           
+        </div>
+        <div class="case">
+            <label for="">Pays</label>
+            <input type="text">
+        </div>
+        <div class="case">
+            <label for="">Adress</label>
+            <input type="text">
+        </div>
+        
+        <div class="col-span-2">
+            <label for="">Situation avec le Fournisseur</label>
+            <div class="">
+            <input type="checkbox" id="actif" name="actif" value="true">
+  <label for="actif"> Fournisseur Actif</label>
+  <input type="checkbox" id="inactif" name="inactif" value="false">
+  <label for="inactif">Fournisseur Inactif</label><br>
+</div>
+        </div>
+<div class="col-span-2 mb-2">
+    <div class="flex justify-between">
+    <button class="rounded bg-white w-72  h-9 border font-semibold">Annuler</button>
+    <button class="rounded bg-indigo-50 w-80 h-9 font-semibold text-cyan-600">Ajouter </button>
+</div>
+</div>
+
+
+    </form>
+   </div>
+    
+    </div>
+</div>
+

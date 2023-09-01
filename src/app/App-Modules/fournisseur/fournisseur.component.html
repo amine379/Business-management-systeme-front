@@ -1,0 +1,55 @@
+<div class="fournisseur-table m-5 bg-slate-50 ">
+    
+    <div class="he p-4  flex justify-between" >
+        <h2 class="font-medium font-serif text-2xl">Fournisseur</h2>
+        <button class="bg-sky-600 text-white font-medium w-40 rounded-md">Ajouter</button>
+    </div>
+    <div class="table-header mt-20 flex justify-between">
+      <div class="filtre flex justify-between ">
+       <div class="bg-white flex justify-around w-32 border-2 border-inherit rounded mx-2"> 
+        <button class=" font-semibold text-sm">Active</button>
+        <span class="material-symbols-outlined text-lg">close</span>
+    </div>
+       <div class="bg-white flex justify-around w-32 border-2 border-inherit rounded mx-2">
+         <button class=" font-semibold text-sm">Inactive</button>
+         <span class="material-symbols-outlined text-lg">close</span>
+        </div>
+       <div class="bg-white flex justify-around w-32 border-2 border-inherit rounded mx-2"> 
+        <button class=" font-semibold text-sm">RAL</button>
+        <span class="material-symbols-outlined text-lg">close</span>
+    </div>
+       <div class="flex bg-white justify-around w-32 border-2 border-inherit rounded mx-2"> 
+        <button class=" font-semibold text-sm">RAP</button>
+        <span class="material-symbols-outlined text-lg">close</span>
+    </div>
+      </div > 
+      <input type="text" placeholder="search" class="border-2 border-inherit rounded w-64 "> 
+    </div>
+    <div class="mt-7">
+        <table class="border-collapse w-full  ">
+            <thead>
+              <tr class="border-t-2 ">
+                <th class="font-medium text-sm">Nom</th>
+                <th class="font-medium text-sm">Status</th>
+                <th class="font-medium text-sm">Ice</th>
+                <th class="font-medium text-sm">Adress</th>
+                <th class="font-medium text-sm">Agence</th>
+                <th class="font-medium text-sm">RAL</th>
+                <th class="font-medium text-sm">RAP</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-t-2  text-center mt-4">
+                <td>amine</td>
+                <td ><button class="border-2  rounded-full bg-green-200 w-28 pl-4"><div class="flex items-center "><div class="w-2 h-2 rounded-full bg-green-900 "></div><span class="pl-1 text-emerald-800 font-semibold">Inactive</span></div></button></td>
+                <td>122033666</td>
+                <td>roche noire casablanca</td>
+                <td>Casa</td>
+                <td ><button class="border-2  rounded-full bg-red-200 w-28 pl-4"><div class="flex items-center "><div class="w-2 h-2 rounded-full bg-red-900 "></div><span class="pl-1 text-red-800 font-semibold">Not Existe</span></div></button></td>
+                <td>5000 <span>Dh</span></td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+</div>
+<app-add-fournisseur-modal></app-add-fournisseur-modal>
