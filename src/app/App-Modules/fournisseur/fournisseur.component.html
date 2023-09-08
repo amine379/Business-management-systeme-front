@@ -1,8 +1,7 @@
 <div class="fournisseur-table m-5 bg-slate-50 ">
-    
     <div class="he p-4  flex justify-between" >
         <h2 class="font-medium font-serif text-2xl">Fournisseur</h2>
-        <button class="bg-sky-600 text-white font-medium w-40 rounded-md">Ajouter</button>
+        <button class="bg-sky-600 text-white font-medium w-40 rounded-md" (click)="modalVisible()">Ajouter</button>
     </div>
     <div class="table-header mt-20 flex justify-between">
       <div class="filtre flex justify-between ">
@@ -52,4 +51,4 @@
           </table>
     </div>
 </div>
-<app-add-fournisseur-modal></app-add-fournisseur-modal>
+<app-add-fournisseur-modal [isAddToFournisseurVisible]="isAddToFournisseurVisible"></app-add-fournisseur-modal>

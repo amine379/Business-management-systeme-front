@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-add-fournisseur-modal',
@@ -7,5 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AddFournisseurModalComponent {
   dataTypes:string[] = ['Apple', 'Orange', 'Banana'];
- x:boolean=false;
-}
+  @Input() isAddToFournisseurVisible: boolean = false;
+  quitModal(){
+    this.isAddToFournisseurVisible=false;
+}}

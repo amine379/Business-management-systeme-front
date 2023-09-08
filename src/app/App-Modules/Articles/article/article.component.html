@@ -1,1 +1,96 @@
-<p>article works!</p>
+<div class="table-article m-7 ">
+    <div class="header-title m-7">
+        <h1 class="font-bold text-3xl">Tableau d'Articles</h1>
+        <p class="font-light">Vous pouvez trouvez ici tout les informations des articles </p>
+    </div>
+    <div class="header-btns flex flex-row-reverse">
+        <button class="bg-sky-600 text-white font-medium w-40 rounded-md p-4 flex m-1  items-center justify-items-center "><span class="material-symbols-outlined">
+            arrow_downward
+            </span>Excel Tables</button>
+        <button class="bg-sky-600 text-white font-medium w-auto rounded-md  p-4 flex  items-center justify-items-center m-1"><span class="material-symbols-outlined">
+            add
+            </span> Ajouter</button>
+        
+        <button class="bg-sky-600 text-white font-medium w-auto   flex  items-center justify-items-center rounded-s-full"><span class="material-symbols-outlined">
+            search
+            </span></button>
+    </div>
+    <div class="filtre-listes flex justify-between mt-3">
+<select id="pet-select" class="border w-40">
+    <ng-container>
+  <option value="">Fournisseur</option>
+  <option value="dog">Dog</option>
+  <option value="cat">Cat</option>
+  <option value="hamster">Hamster</option>
+  <option value="parrot">Parrot</option>
+  <option value="spider">Spider</option>
+  <option value="goldfish">Goldfish</option>
+</ng-container>
+</select>
+
+<select id="pet-select" class="border w-40">
+  <option value="">Famille</option>
+  <option value="dog">Dog</option>
+  <option value="cat">Cat</option>
+  <option value="hamster">Hamster</option>
+  <option value="parrot">Parrot</option>
+  <option value="spider">Spider</option>
+  <option value="goldfish">Goldfish</option>
+</select>
+
+<select id="pet-select" class="border w-40">
+  <option value="">Sous Famille</option>
+  <option value="dog">Dog</option>
+  <option value="cat">Cat</option>
+  <option value="hamster">Hamster</option>
+  <option value="parrot">Parrot</option>
+  <option value="spider">Spider</option>
+  <option value="goldfish">Goldfish</option>
+</select>
+
+
+<select id="pet-select" class="border w-40">
+  <option value="">Agence</option>
+  <option value="dog">Dog</option>
+  <option value="cat">Cat</option>
+  <option value="hamster">Hamster</option>
+  <option value="parrot">Parrot</option>
+  <option value="spider">Spider</option>
+  <option value="goldfish">Goldfish</option>
+</select>
+    </div>
+<div class="table-of-articles mt-7">
+    <table class="table-auto border-collapse w-full">
+        <thead>
+          <tr class="border-t-2">
+            <th>Reference</th>
+            <th>Designation</th>
+            <th>Situation</th>
+            <th>Famille</th>
+            <th>Sous Famille</th>
+            <th>Prix d'achat</th>
+            <th>Prix de vente</th>
+            <th>Fournisseur</th>
+            <th>Agence</th>
+
+
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="border-t-2">
+            <td>2</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+            <td>7</td>
+            <td>8</td>
+          </tr>
+        </tbody>
+      </table>
+</div>
+    <div class="pagination"></div>
+</div>

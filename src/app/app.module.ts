@@ -18,6 +18,8 @@ import { PaymentComponent } from './App-Modules/Achat/payment/payment.component'
 import { AddFournisseurModalComponent } from './App-Modules/fournisseur/add-fournisseur-modal/add-fournisseur-modal.component';
 import { ArticleComponent } from './App-Modules/Articles/article/article.component';
 import { AddModalArticleComponent } from './App-Modules/Articles/add-modal-article/add-modal-article.component';
+import { UniteComponent } from './App-Modules/Unite/unite/unite.component';
+import { FamilleComponent } from './App-Modules/Unite/famille/famille.component';
 
 
 
@@ -39,6 +41,8 @@ import { AddModalArticleComponent } from './App-Modules/Articles/add-modal-artic
     AddFournisseurModalComponent,
     ArticleComponent,
     AddModalArticleComponent,
+    UniteComponent,
+    FamilleComponent,
    
     
   ],
