@@ -1,6 +1,7 @@
 <div class="modal-background bg-black bg-opacity-50 fixed inset-0 overflow-y-auto" 
 [ngClass]="{'hidden':!isAddToFournisseurVisible}" (click)="quitModal()">
-    <div class="modal-container w-2/4 mx-auto  bg-white my-9 px-8 py-1 rounded  ">
+
+    <div class="modal-container w-2/4 mx-auto  bg-white my-9 px-8 py-1 rounded  " (click)="stopClosingModal($event)">
   
     <div class="header-modal ">
         <div class="flex justify-between pb-6">
@@ -87,5 +88,6 @@
    </div>
     
     </div>
+
 </div>
 

@@ -10,4 +10,7 @@ export class AddFournisseurModalComponent {
   @Input() isAddToFournisseurVisible: boolean = false;
   quitModal(){
     this.isAddToFournisseurVisible=false;
+}
+stopClosingModal(event:Event){
+  event.stopPropagation();
 }}
