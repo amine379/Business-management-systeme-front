@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./article.component.css']
 })
 export class ArticleComponent {
-
+  public isAddToFournisseurVisible: boolean=false ;
+  modalVisible(){
+   this.isAddToFournisseurVisible=!this.isAddToFournisseurVisible;
+  }
 }

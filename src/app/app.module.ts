@@ -20,6 +20,13 @@ import { ArticleComponent } from './App-Modules/Articles/article/article.compone
 import { AddModalArticleComponent } from './App-Modules/Articles/add-modal-article/add-modal-article.component';
 import { UniteComponent } from './App-Modules/Unite/unite/unite.component';
 import { FamilleComponent } from './App-Modules/Unite/famille/famille.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { FamilleModalComponent } from './App-Modules/usingByArticle/Famille/famille-modal/famille-modal.component';
+import { SousFamilleModalComponent } from './App-Modules/usingByArticle/SousFamille/sous-famille-modal/sous-famille-modal.component';
+import { TvaModalComponent } from './App-Modules/usingByArticle/Tva/tva-modal/tva-modal.component';
+import { UniteModalComponent } from './App-Modules/usingByArticle/unite/unite-modal/unite-modal.component';
+import { ArticledesComponent } from './App-Modules/usingByArticle/articledes/articledes.component';
 
 
 
@@ -43,12 +50,23 @@ import { FamilleComponent } from './App-Modules/Unite/famille/famille.component'
     AddModalArticleComponent,
     UniteComponent,
     FamilleComponent,
+    FamilleModalComponent,
+    SousFamilleModalComponent,
+    TvaModalComponent,
+    UniteModalComponent,
+    ArticledesComponent,
+   
+
+  
    
     
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -20,23 +20,23 @@
         </div>
   
    <div class="contente-modal">
-    <form action="" class="grid grid-cols-2 gap-4 ">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="grid grid-cols-2 gap-4 ">
         <div class="case ">
             <label for="" class="">Nom d'Entreprise</label>
-            <input type="text" class="">
+            <input type="text" class="" formControlName="nom">
             <span *ngIf="isAddToFournisseurVisible" [ngClass]="{'hidden':isAddToFournisseurVisible}">*Le champs est obligatoire</span>
             <span *ngIf="isAddToFournisseurVisible" [ngClass]="{'hidden':isAddToFournisseurVisible}">*Le Nom doit etre majiscule ne contiet pas des accent ou des tiré</span>
             <span *ngIf="isAddToFournisseurVisible" [ngClass]="{'hidden':isAddToFournisseurVisible}">*Le Nom ne doit pas passé 20 caractére</span>
         </div>
         <div class="case">
             <label for="">Ice</label>
-            <input type="text">
+            <input type="text" formControlName="ice">
             <span *ngIf="isAddToFournisseurVisible" [ngClass]="{'hidden':isAddToFournisseurVisible}">*Le champs est obligatoire</span>
             <span *ngIf="isAddToFournisseurVisible" [ngClass]="{'hidden':isAddToFournisseurVisible}">*L'Ice ne doit pas passé 20 caractére et pas moins de 14 caractére</span>
         </div>
         <div class="case">
             <label for="">Télephone</label>
-            <input type="text">
+            <input type="text" formControlName="telephone">
             <span *ngIf="isAddToFournisseurVisible" [ngClass]="{'hidden':isAddToFournisseurVisible}">*Le champs est obligatoire</span>
             <span *ngIf="isAddToFournisseurVisible" [ngClass]="{'hidden':isAddToFournisseurVisible}">*Le numéro de télephone ne doit pas contenir des lettres</span>
         </div>
@@ -50,36 +50,42 @@
                     </span>
             </div>
             <ng-container *ngFor="let dataType of dataTypes">
-                <div class="px-3 py-3 rounded-lg hover:main-bg-color my-1 w-64" style="background-color: rgb(196, 196, 196); color: rgb(255, 11, 11);" [ngClass]="{'hidden':!isAddToFournisseurVisible}"
-                  >{{ dataType}}
+                
+                <div class="border m-1 rounded-lg"> 
+                    <div class="p-1 inset-0 overflow-y-auto">
+                <label class="container">{{dataType.name}}
+                    <input type="checkbox" [value]="dataType.id"  (change)="onChangeAgence($event)" >
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
                 </div>
               </ng-container>
            
         </div>
         <div class="case">
             <label for="">Pays</label>
-            <input type="text">
+            <input type="text" >
         </div>
         <div class="case">
             <label for="">Adress</label>
-            <input type="text">
+            <input type="text"  formControlName="adress">
         </div>
         
         <div class="col-span-2">
             <label for="">Situation avec le Fournisseur</label>
             <div class="flex justify-around">
                 <div>
-            <input type="checkbox" id="actif" name="actif" value="true">
+            <input type="checkbox" id="actif" name="actif" value="true"  formControlName="situation">
   <label for="actif" class="pl-1"> Fournisseur Actif</label></div>
-  <div> <input type="checkbox" id="inactif" name="inactif" value="false">
+  <div> <input type="checkbox" id="inactif" name="inactif" value="false" formControlName="situation">
   <label for="inactif" class="pl-2">Fournisseur Inactif</label>
 </div>
 </div>
         </div>
 <div class="col-span-2 mb-2">
     <div class="flex justify-between">
-    <button class="rounded bg-white w-72  h-9 border font-semibold">Annuler</button>
-    <button class="rounded bg-indigo-50 w-80 h-9 font-semibold text-cyan-600">Ajouter </button>
+    <button class="rounded bg-white w-72  h-9 border font-semibold" type="submit" (click)="quitModal()">Annuler</button>
+    <button class="rounded bg-indigo-50 w-80 h-9 font-semibold text-cyan-600" type="submit" [disabled]="form.invalid">Ajouter </button>
 </div>
 </div>
 

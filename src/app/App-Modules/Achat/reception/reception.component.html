@@ -1,7 +1,7 @@
 <div class="reception  m-5 bg-slate-50 ">
     <h1 class="ont-medium font-serif text-2xl he p-4">Réception</h1>
     <div class="containner-reception mt-12">
-      <div class="heder-container flex justify-between">
+      <div class="heder-container flex justify-between px-4">
 <div class="fournisseur flex flex-col gap-y-1">
 <div class="flex"><label for="ref" class="text-sm font-semibold pr-1 w-40">Fournisseur Ref</label> <input type="text" name="ref" class="border border-solid border-black hover:border-2 rounded-sm h-5 "></div>
 <div class="flex"><label for="name-four"  class="text-sm font-semibold pr-1 w-40">Nom Fournisseur</label> <input type="text" name="name-four"  class="border border-solid border-black hover:border-2 rounded-sm h-5"></div>
@@ -23,42 +23,42 @@
 
 </datalist>
     </div>
-    <div class="table-reception">
-        <table class="table-auto">
+    <div class="table-reception m-4 mt-11">
+        <table class="table-auto w-full border-collapse border-2 border-black ">
             <thead>
               <tr>
-                <th>#</th>
-                <th>Num d'articles</th>
-                <th>Description</th>
-                <th>Code Unité</th>
-                <th>Qantité</th>
-                <th>Prix Unitaire</th>
-                <th>Code Tva</th>
-                <th>Prix TTC</th>
+                <th class="border">#</th>
+                <th class="border">Num d'articles</th>
+                <th class="border">Description</th>
+                <th class="border">Code Unité</th>
+                <th class="border">Qantité</th>
+                <th class="border">Prix Unitaire</th>
+                <th class="border">Code Tva</th>
+                <th class="border">Prix TTC</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-             <td></td>
-             <td></td>
-             <td></td>
-             <td></td>
-             <td></td>
-             <td></td>
-             <td></td>
-             <td></td>
+              <tr class="text-center">
+             <td class="borderContent"></td>
+             <td class="borderContent"></td>
+             <td class="borderContent"></td>
+             <td class="borderContent"></td>
+             <td class="borderContent"></td>
+             <td class="borderContent"></td>
+             <td class="borderContent"></td>
+             <td class="borderContent"></td>
               </tr>
              
             </tbody>
           </table>
-          <div class="footer-table">
-            <div class="remarque"><label for="remarque-recep">Remarque</label> <input type="text" name="remarque-recep"></div>
-            <div class="calcule-recep ">
-              <label for="recep-ref">Total Ht</label> <input type="text" name="recep-ref">
-              <label for="recep-ref">Remise</label> <input type="text" name="recep-ref">
-              <label for="recep-ref">Fret</label> <input type="text" name="recep-ref">
-              <label for="recep-ref">TVA/TAXES</label> <input type="text" name="recep-ref">
-              <label for="recep-ref">TTC</label> <input type="text" name="recep-ref">
+          <div class="footer-table flex justify-between m-3">
+            <div class="remarque flex items-stretch"><label for="remarque-recep " class="font-semibold self-center pr-2 pb-7 ">Remarque</label> <textarea class="border self-auto h-40 w-64"></textarea></div>
+            <div class="calcule-recep flex flex-col">
+             <div class="pb-3 flex"> <label for="recep-ref" class="pr-1 w-28 font-semibold">Total Ht</label> <input type="text" name="recep-ref" class="border rounded"></div>
+              <div class="pb-3 flex"><label for="recep-ref" class="pr-1 w-28 font-semibold">Remise</label> <input type="text" name="recep-ref" class="border rounded"></div>
+              <div class="pb-3 flex " ><label for="recep-ref" class="pr-1 w-28 font-semibold">Fret</label> <input type="text" name="recep-ref" class="border rounded"></div>
+              <div class="pb-3 flex"><label for="recep-ref" class="pr-1 w-28 font-semibold">TVA</label> <input type="text" name="recep-ref" class="border rounded"></div>
+             <div class="pb-3 flex"> <label for="recep-ref" class="pr-1 w-28 font-semibold">TTC</label> <input type="text" name="recep-ref" class="border rounded"></div>
             </div>
           </div>
     </div>

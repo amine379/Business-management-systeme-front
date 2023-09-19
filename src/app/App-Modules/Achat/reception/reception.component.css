@@ -1,0 +1,11 @@
+.border{
+    border-width: 2px;
+    border-color:#000000;
+   
+}
+.borderContent{
+    border-width: 2px;
+    border-color:#000000;
+    font-size: 1rem; /* 16px */
+    line-height: 1.5rem; 
+}
