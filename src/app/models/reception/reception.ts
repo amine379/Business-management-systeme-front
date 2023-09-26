@@ -8,6 +8,7 @@ export class Reception{
     date_echeance!:Date|null;
     prix_Ht!:number|null;
 	prix_TTC!:number|null;
+	factureRef!:string;
 	 Remise!:number|null;
 	 Remarque!:string|null;
 	 tva!:number|null;

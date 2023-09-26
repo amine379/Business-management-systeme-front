@@ -17,4 +17,7 @@ return this.http.post(`${this.apiUrl}`,fournisseurRequest);
   getAllFournisseur() {
  return this.http.get<Fournisseur[]>(this.apiUrl);
   }
+  getFournisseurByNom(nom:string): Observable<any>{
+    return this.http.get<Fournisseur>(`${this.apiUrl}/${nom}`)
+  }
 }

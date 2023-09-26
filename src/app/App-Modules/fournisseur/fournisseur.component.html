@@ -22,29 +22,41 @@
         <span class="material-symbols-outlined text-lg">close</span>
     </div>
       </div > 
-      <input type="text" placeholder="search" class="border-2 border-inherit rounded w-64 "> 
+      <input type="text" placeholder="search" class="border-2 border-inherit rounded w-64 " [(ngModel)]="searchFournissuer" (input)="filterFournisseur()"> 
     </div>
     <div class="mt-7">
         <table class="border-collapse w-full  ">
             <thead>
               <tr class="border-t-2 ">
-                <th class="font-medium text-sm">Nom</th>
-                <th class="font-medium text-sm">Status</th>
-                <th class="font-medium text-sm">Ice</th>
-                <th class="font-medium text-sm">Adress</th>
-                <th class="font-medium text-sm">Agence</th>
-                <th class="font-medium text-sm">RAL</th>
-                <th class="font-medium text-sm">RAP</th>
+                <th class="font-semibold text-sm">Nom</th>
+                <th class="font-semibold text-sm">Status</th>
+                <th class="font-semibold text-sm">Ice</th>
+                <th class="font-semibold text-sm">Adress</th>
+                <th class="font-semibold text-sm">Agence</th>
+                <th class="font-semibold text-sm">Telephone</th>
+                <th class="font-semibold text-sm">RAL</th>
               </tr>
             </thead>
             <tbody>
-              <tr class="border-t-2  text-center mt-4">
-                <td>amine</td>
-                <td ><button class="border-2  rounded-full bg-green-200 w-28 pl-4"><div class="flex items-center "><div class="w-2 h-2 rounded-full bg-green-900 "></div><span class="pl-1 text-emerald-800 font-semibold">Inactive</span></div></button></td>
-                <td>122033666</td>
-                <td>roche noire casablanca</td>
-                <td>Casa</td>
-                <td ><button class="border-2  rounded-full bg-red-200 w-28 pl-4"><div class="flex items-center "><div class="w-2 h-2 rounded-full bg-red-900 "></div><span class="pl-1 text-red-800 font-semibold">Not Existe</span></div></button></td>
+              <tr class="border-t-2  text-center mt-4" *ngFor="let fournisseur of listOfFournisseurs">
+                <td>
+                  <div class="flex">
+                  <span class="material-symbols-outlined text-orange-500 cursor-pointer pr-1">
+                  arrow_forward
+                  </span>
+                  <span class="material-symbols-outlined text-green-700 cursor-pointer pr-1">
+                      settings
+                    </span>
+                 <span class="pl-2 font-medium">{{fournisseur.nom}}</span> 
+                </div>
+                </td>
+                <td class="justify-items-center" ><button [ngClass]="fournisseur.situation==true?'bg-green-200':'bg-red-200'" class="border-2  rounded-full  w-28 pl-4"><div class="flex items-center "><div class="w-2 h-2 rounded-full bg-green-900 "></div><span class="pl-1 text-emerald-800 font-semibold">Active</span></div></button></td>
+                <td>{{fournisseur.ice}}</td>
+                <td>{{fournisseur.adress}}</td>
+                <td><span class="material-symbols-outlined">
+                  visibility
+                  </span></td>
+                <td >+212-{{fournisseur.telephone}}</td>
                 <td>5000 <span>Dh</span></td>
               </tr>
             </tbody>

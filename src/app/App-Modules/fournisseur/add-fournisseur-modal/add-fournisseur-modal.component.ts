@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Agence } from 'src/app/models/agence/agence';
 import { Fournisseur } from 'src/app/models/fournisseur/fournisseur';
 import { AgenceService } from 'src/app/services/agence/agence.service';
+import { CountrieService } from 'src/app/services/countries/countrie.service';
 import { FournisseurService } from 'src/app/services/fournisseur/fournisseur.service';
 
 
@@ -15,7 +16,11 @@ import { FournisseurService } from 'src/app/services/fournisseur/fournisseur.ser
 export class AddFournisseurModalComponent {
   dataTypes!:Agence[] ;
   agenceIds:number[]=[];
+  countries: any[] = [];
   @Input() isAddToFournisseurVisible: boolean = false;
+  listAgeceExpanded:boolean=false;
+  listPaysExpended:boolean=false;
+
   form:FormGroup=new FormGroup({
     nom:new FormControl('',[Validators.required,Validators.maxLength(20)]),
     ice:new FormControl('',[Validators.required,Validators.maxLength(15),Validators.minLength(15)]),
@@ -24,19 +29,23 @@ export class AddFournisseurModalComponent {
     telephone:new FormControl(''),
     agences:new FormControl('')
   });
-  constructor(private agenceService:AgenceService,private fournisseurService:FournisseurService){
+  constructor(private agenceService:AgenceService,
+    private fournisseurService:FournisseurService,
+    private countryService:CountrieService){
     
  
   
   }
   ngOnInit(){
 this.loadAgences();
+
   }
 
   loadAgences(){
 this.agenceService.getAllAgences().subscribe((data:any)=>{
 this.dataTypes=data;
 }),
+this.countryService.getCountrie().forEach((data)=>this.countries=data)
 console.error('Error fetching tutorials:', Error);
 
   }
@@ -72,4 +81,5 @@ onChangeAgence($event:any){
     }
   }
 console.log(this.agenceIds)}
+
 }
