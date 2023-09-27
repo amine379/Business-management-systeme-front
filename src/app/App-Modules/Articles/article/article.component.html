@@ -4,7 +4,7 @@
         <p class="font-light">Vous pouvez trouvez ici tout les informations des articles </p>
     </div>
     <div class="header-btns flex flex-row-reverse">
-        <button class="bg-sky-600 text-white font-medium w-40 rounded-md p-4 flex m-1  items-center justify-items-center "><span class="material-symbols-outlined">
+        <button class="bg-sky-600 text-white font-medium w-40 rounded-md p-4 flex m-1  items-center justify-items-center " (click)="exportToExcel()"><span class="material-symbols-outlined">
             arrow_downward
             </span>Excel Tables</button>
         <button class="bg-sky-600 text-white font-medium w-auto rounded-md  p-4 flex  items-center justify-items-center m-1" (click)="modalVisible()"><span class="material-symbols-outlined">
@@ -60,7 +60,7 @@
 </select>
     </div>
 <div class="table-of-articles mt-7">
-    <table class="table-auto border-collapse w-full">
+    <table class="table-auto border-collapse w-full" id="my-table">
         <thead>
           <tr class="border-t-2">
             <th>Reference</th>
