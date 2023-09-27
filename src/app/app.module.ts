@@ -29,8 +29,7 @@ import { UniteModalComponent } from './App-Modules/usingByArticle/unite/unite-mo
 import { ArticledesComponent } from './App-Modules/usingByArticle/articledes/articledes.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AutoCompleteModule } from 'primeng/autocomplete';
-
-
+import { RadioButtonModule } from 'primeng/radiobutton';
 
 
 @NgModule({
@@ -71,7 +70,8 @@ import { AutoCompleteModule } from 'primeng/autocomplete';
     HttpClientModule,
     BrowserAnimationsModule,
     FormsModule,
-    AutoCompleteModule
+    AutoCompleteModule,
+    RadioButtonModule
     
   ],
   providers: [],
