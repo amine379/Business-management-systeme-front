@@ -1,0 +1,59 @@
+<button (click)="addReceptionDetails()">addddd</button>
+<form>
+<table class="table-auto w-full border-collapse border-2 border-black ">
+    <thead>
+      <tr>
+        <th class="border ">#</th>
+        <th class="border">ID Article</th>
+        <th class="border">Description</th>
+        <th class="border">Unité</th>
+        <th class="border">Qantité</th>
+        <th class="border">Prix Unitaire</th>
+        <th class="border">Tva</th>
+        <th class="border">Prix TTC</th>
+      </tr>
+    </thead>
+    <tbody [formGroup]="receptionDetails" >
+      <ng-container formArrayName="tableOfReceptionDetail" *ngFor="let group of getReceptionDetail.controls;let i=index">
+      <tr class="text-center" formGroupName="{{i}}">
+     <td class="borderContent">{{i+1}}</td>
+     <td class="borderContent">
+      <ng-container  *ngIf="articleChosen==''">
+        <input  (input)="filterArticleWithId(idOfArticle.value)" #idOfArticle />
+
+      <div class="barOfSuggestion label flex flex-col border-2 border-lime-950 m-2 p-2 overflow-y-auto h-32 "
+       *ngIf="idOfArticle.value!='' && articleChosen==''">
+        <label *ngFor="let article of filtredAerticles">
+             <input type="radio" name="" id="" (click)="choseArticle(article)" > 
+                           {{article.id}}
+        </label>
+     </div>
+      </ng-container>
+
+      <input type="text" [value]="articleChosed.id"  formControlName="id" *ngIf="articleChosen!=''">
+      </td>
+     <td class="borderContent">
+      <ng-container  *ngIf="articleChosen==''">
+      <input (input)="filterArticleWithName(nameOfArticle.value)"  #nameOfArticle >
+
+      <div class="barOfSuggestion label flex flex-col border-2 border-lime-950 m-2 p-2 overflow-y-auto h-32 " *ngIf="nameOfArticle.value!='' && articleChosen==''">
+        <label *ngFor="let article of filtredAerticles">
+        <input type="radio" name="" id="" (click)="choseArticle(article)" >
+        {{article.name}}
+        </label>
+       
+               </div>
+      </ng-container>
+      <input type="text"  [value]="articleChosed.name"  formControlName="description" *ngIf="articleChosen!=''">
+    </td>
+     <td class="borderContent"><input type="text"  [value]="articleChosed.unite.name" formControlName="unite" *ngIf="articleChosen!=''"></td>
+     <td class="borderContent"><input type="text"  formControlName="quantite"  *ngIf="articleChosen!=''"></td>
+     <td class="borderContent"><input type="text"   [value]="articleChosed!.purchase_price" formControlName="PrixUnite" *ngIf="articleChosen!=''"></td>
+     <td class="borderContent"><input type="text"   [value]="articleChosed.tva.code"  *ngIf="articleChosen!=''" formControlName="tva"></td>
+     <td class="borderContent"><input type="text"   [value]="articleChosed.tva.code"  *ngIf="articleChosen!=''" formControlName="tva"></td>
+      </tr>
+    </ng-container>
+    </tbody>
+  </table>
+</form>
+  

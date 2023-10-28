@@ -1,0 +1,33 @@
+<div class="fournisseur-table m-5 bg-slate-50 ">
+    <div class="he p-4  flex justify-between" >
+        <h2 class="font-medium font-serif text-2xl">Facute</h2>
+        <button class="bg-sky-600 text-white font-medium w-40 rounded-md" >Ajouter</button>
+    </div>
+    <div class="card" *ngIf="">
+        <p-table [value]="products" [(selection)]="selectedProducts" dataKey="code" [tableStyle]="{'min-width': '50rem'}">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>Code</th>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Quantity</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-product>
+                <tr>
+                    <td>
+                        <div class="flex align-items-center gap-1">
+                            <p-checkbox name="group1" value="product" [(ngModel)]="selectedProducts" inputId="ny"></p-checkbox>
+                            
+                        </div>
+                    </td>
+                    <td>{{product.nom}}</td>
+                    <td>{{product.ice}}</td>
+                    <td>{{product.adress}}</td>
+                    <td>{{product.quantity}}</td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+    <add-facture></add-facture>
+</div>

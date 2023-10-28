@@ -1,0 +1,48 @@
+<div class="grid grid-cols-12">
+
+<div class="signin bg-slate-50 p-6 col-span-5 h-screen">
+    <div class="logo flex items-center mx-4 ml-6">
+        <img src="../../../../assets/images/Logo/Logo1.png" alt="" class="w-20">
+    <h2 class="text-2xl font-semibold"><span class="font-bold text-cyan-700">Busi</span>ness Management System </h2>
+    </div>
+    <div class="formulaire bg-white rounded p-7 mt-4 mx-14 ">
+        <div class="form-header flex flex-col justify-center ">
+        <h2 class="font-bold text-xl  flex justify-center pt-1">Se Connecter</h2>
+        <p class="flex  justify-center font-thin text-slate-400 text-sm">Bon retour, Veuillez entrer vos coordonnées</p>
+    </div>
+    <div class="form-contenu  mt-10 mx-2">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()" action="">
+            <div class="email  grid grid-rows-2 ">
+                <label for="email" class="text-basic font-semibold text-slate-500 ">Email</label>
+                <input type="email" name="email" formControlName="email" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+             <span *ngIf="isFormSubmitted && form.controls['email'].hasError('required')" class="block text-red-500 text-sm mt-2">*Le champs Emails est obligatoire</span>
+            </div>
+             <div class="password pt-2">
+                <div class="head-label  grid grid-rows-2">
+                    <label for="password" class=" text-basic font-semibold text-slate-500 ">Mot de pass</label>
+                    <div class="relative">
+                    <input type="password" name="password" id="" class="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" >
+                    <span class="absolute inset-y-0 right-0 flex items-center pr-3 cursor-pointer"  ><span class="material-symbols-outlined">
+                        visibility
+                        </span></span>
+                </div>
+                </div>
+             </div>
+
+             <div class="relative">
+                <a href="" class="absolute right-2 mt-1 text-sky-600 font-semibold">mot de passe oublié</a>
+               </div>
+            
+             <div class="button mt-20 mx-5">
+                <button class="rounded-ful w-80 bg-blue-600 h-10 rounded-full text-white font-semibold">Connecter</button>
+             </div> 
+           
+        </form>
+    </div>
+    </div>
+</div>
+
+<div class="description col-span-7 ">
+    <app-description-auth></app-description-auth>
+
+</div>

@@ -15,11 +15,13 @@
    <input type="text" name="name-four"  class="border border-solid border-black hover:border-2 rounded-sm h-5" [(ngModel)]="fournisseurSearched" (input)="filtreFournisseur(fournisseurSearched)" [hidden]="fournisseurChosed.nom!=''">
    <div class="flex">
    <input type="text" name="name-four"  class="border border-solid border-black hover:border-2 rounded-sm h-5" [value]="fournisseurChosed.nom" [hidden]="fournisseurChosed.nom==''" readonly>
-   <button [hidden]="fournisseurChosed.nom==''" class="pl-2" (click)="fournisseurChosed.nom=''"><div class="w-2 h-2 rounded-full bg-green-900" ></div></button>
+   <button [hidden]="fournisseurChosed.nom==''" class="pl-2" (click)="fournisseurChosed.nom=''">
+    <div class="w-2 h-2 rounded-full bg-green-900" ></div>
+  </button>
    </div>
    <div class="label flex flex-col border-2 border-lime-950 m-2 p-2 overflow-y-auto h-32 " *ngIf="fournisseurSearched!='' ">
     <label *ngFor="let fournisseur of fournisseursList ">
-      <input type="radio" name="programmingLanguage"  (click)="choseFournisseur(fournisseur)" >
+      <input type="radio" name=""  (click)="choseFournisseur(fournisseur)" >
       {{fournisseur.nom}}
   </label>
    </div>
@@ -54,34 +56,9 @@
 
 </datalist>
     </div>
+
     <div class="table-reception m-4 mt-11">
-        <table class="table-auto w-full border-collapse border-2 border-black ">
-            <thead>
-              <tr>
-                <th class="border ">#</th>
-                <th class="border">Num d'articles</th>
-                <th class="border">Description</th>
-                <th class="border">Code Unité</th>
-                <th class="border">Qantité</th>
-                <th class="border">Prix Unitaire</th>
-                <th class="border">Code Tva</th>
-                <th class="border">Prix TTC</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="text-center">
-             <td class="borderContent"></td>
-             <td class="borderContent"><input type="text" ></td>
-             <td class="borderContent"><input type="text"></td>
-             <td class="borderContent"></td>
-             <td class="borderContent"></td>
-             <td class="borderContent"></td>
-             <td class="borderContent"></td>
-             <td class="borderContent"></td>
-              </tr>
-             
-            </tbody>
-          </table>
+        <reception-details></reception-details>
           <div class="footer-table flex justify-between m-3">
             <div class="remarque flex items-stretch"><label for="remarque-recep " class="font-semibold self-center pr-2 pb-7 ">Remarque</label> <textarea class="border self-auto h-40 w-64"></textarea></div>
             <div class="calcule-recep flex flex-col">

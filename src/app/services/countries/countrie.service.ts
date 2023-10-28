@@ -13,3 +13,8 @@ export class CountrieService {
     return this.http.get(this.apiUrl);
   }
 }
+
+export interface custumerAction {
+    type: string;
+    payload: any;
+}

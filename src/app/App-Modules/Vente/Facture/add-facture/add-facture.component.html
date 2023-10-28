@@ -1,0 +1,96 @@
+<div class="add-facture bg-splate-200 ">
+    <div class=" m-7">
+    <div class="header flex justify-between">
+        <div class="add-entete w-48 h-32 bg-slate-200 flex ">
+            <button class="self-center pl-2 font-medium">+ Ajouter Votre Entéte</button>
+        </div>
+        <span class="font-semibold text-2xl">Facture</span>
+    </div>
+ <form [formGroup]="factureForm">
+    <div class="info-facture flex justify-between mt-4">
+        <div class="info-client flex flex-col ">
+            <div class="flex">
+                <label for="Client" class="font-medium w-40" >Client:</label>
+            <input type="text" name="Client" id="Client" class="border border-solid border-black hover:border-2 rounded-sm h-5">
+            
+        </div>
+        <div class="flex">
+            <label for="Ice" class="font-medium w-40">ICE:</label>
+            <input type="text" name="Ice" id="Ice" class="border border-solid border-black hover:border-2 rounded-sm h-5">
+           
+        </div>           
+        </div >
+        <div class="info-facture flex flex-col">
+            <div class="flex"> 
+             <label for="Reference" class="font-medium w-40">Reference:</label>
+             <input type="text" name="Reference" id="Reference" class="border border-solid border-black hover:border-2 rounded-sm h-5">
+            </div>
+            <div class="flex">  
+            <label for="Date-Facture" class="font-medium w-40">Date Facture:</label>
+                 <input type="date" name="Date" id="Date-Facture" class="border border-solid border-black hover:border-2 rounded-sm h-5">
+                </div>
+            <div class="flex">
+                <label for="payment" class="font-medium w-40"> Mode Payment:</label>
+                <select id="payment" name="payment" class="border border-solid border-black hover:border-2 rounded-sm h-5">
+                    <option value="Espece">Espece</option>
+                    <option value="Par cheque">Par Cheque</option>
+                    
+                  </select>
+          
+        
+            
+        </div>
+        </div>
+    </div>
+        <div class="listOfArticles mt-4 ">
+<table formArrayName="articleList" class="table-auto w-full border-collapse border-2 border-black ">
+    <thead>
+        <tr>
+            <td class="border ">#</td>
+            <td class="border ">Description</td>
+            <td class="border ">Quantite</td>
+            <td class="border ">Prix Unitaire</td>
+            <td class="border ">Tva</td>
+            <td class="border ">Montant</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let articl of article.controls;let i=index" [formGroupName]="i" class="pb-1">
+            <td>{{i+1}}</td>
+           <td>
+            <input type="text" class="form-control" formControlName="id" placeholder="id"></td>
+           <td><input type="text" class="form-control" formControlName="quantity"></td>
+           <td><input  type="text" class="form-control" formControlName="sellingPrice"></td>
+           <td> 
+            <select class="form-control" formControlName="tva">
+            <option [value]="0.5" >5%</option>
+            <option [value]="0.5" >15%</option>
+            <option [value]="0.5" >25%</option>
+        </select>
+    </td>
+    <td><input type="text" [value]=""></td>
+<td><button class="hover:bg-red-300 rounded-sm w-7 shadow-xl  "><span class="font-semibold text-white">X</span></button></td>
+
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td >
+                <button (click)="addVariant()" class="rounded bg-emerald-600 w-40"><span class="font-bold text-lg">+</span><span class="text-white text-lg font-bold">Article</span></button>
+            </td>
+        </tr>
+    </tfoot>
+</table>
+        </div>
+ </form>
+ <div class="footer">
+    <div class="remarque"></div>
+    <div class="calcule">
+
+    </div>
+ </div>
+
+</div>
+
+
+</div>

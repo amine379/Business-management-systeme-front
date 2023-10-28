@@ -1,4 +1,5 @@
 import { Tva } from "../tva/tva";
+import { Unite } from "../unite/unite";
 
 export class Article{
  id!:number;
@@ -7,6 +8,7 @@ export class Article{
 selling_price!:number;
 tva!:Tva;
  Stock!:number;
+ unite!:Unite;
 situation!:boolean;
 id_unite!:number;
 id_famille!:number;

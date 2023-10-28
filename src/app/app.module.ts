@@ -30,6 +30,23 @@ import { ArticledesComponent } from './App-Modules/usingByArticle/articledes/art
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AutoCompleteModule } from 'primeng/autocomplete';
 import { RadioButtonModule } from 'primeng/radiobutton';
+import { AuthenComponent } from './layout/authen/authen.component';
+import { ForgetPasswordComponent } from './layout/authen/forget-password/forget-password.component';
+import { SigninComponent } from './layout/authen/signin/signin.component';
+import { SignupComponent } from './layout/authen/signup/signup.component';
+import { DescriptionAuthComponent } from './layout/authen/description-auth/description-auth.component';
+import { NgxsModule } from '@ngxs/store';
+import {NgxsReduxDevtoolsPluginModule} from '@ngxs/devtools-plugin';
+import {NgxsLoggerPluginModule} from '@ngxs/logger-plugin';
+import { CreateComponent } from './create/create.component';
+import { ReadComponent } from './read/read.component';
+import { TutorialState } from './state/tutorial.state';
+import { ReceptionDetailsComponent } from './App-Modules/Achat/reception-details/reception-details.component';
+import { FactureComponent } from './App-Modules/Vente/Facture/facture.component';
+import { DevisComponent } from './App-Modules/Vente/devis/devis.component';
+import { TableModule } from 'primeng/table';
+import { CheckboxModule } from 'primeng/checkbox';
+import { AddFactureComponent } from './App-Modules/Vente/Facture/add-facture/add-facture.component';
 
 
 @NgModule({
@@ -57,6 +74,19 @@ import { RadioButtonModule } from 'primeng/radiobutton';
     TvaModalComponent,
     UniteModalComponent,
     ArticledesComponent,
+    AuthenComponent,
+    ForgetPasswordComponent,
+    SigninComponent,
+    SignupComponent,
+    ForgetPasswordComponent,
+    DescriptionAuthComponent,
+    CreateComponent,
+    ReadComponent,
+    ReceptionDetailsComponent,
+    FactureComponent,
+    DevisComponent,
+    AddFactureComponent
+
     
 
   
@@ -71,7 +101,15 @@ import { RadioButtonModule } from 'primeng/radiobutton';
     BrowserAnimationsModule,
     FormsModule,
     AutoCompleteModule,
-    RadioButtonModule
+    RadioButtonModule,
+    TableModule,
+    CheckboxModule,
+    NgxsModule.forRoot([
+      TutorialState
+    ]),
+    NgxsReduxDevtoolsPluginModule.forRoot(),
+    NgxsLoggerPluginModule.forRoot()
+    
     
   ],
   providers: [],
