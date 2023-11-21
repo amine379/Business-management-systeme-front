@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent {
-
+  venteExpanded:boolean=false;
+  achatExpanded:boolean=false;
+  articleExpendend:boolean=false;
+constructor(){
+}
 }

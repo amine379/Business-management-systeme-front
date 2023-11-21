@@ -1,1 +1,53 @@
-<p>tva-modal works!</p>
+<div class="modal-background bg-black bg-opacity-50 fixed inset-0 overflow-y-auto " 
+[hidden]="!isAddToTvaVisible" (click)="quitModal()">
+
+    <div class="modal-container w-2/4 mx-auto  bg-white my-9 px-8 py-1 rounded  " (click)="stopClosingModal($event)">
+  
+    <div class="header-modal ">
+        <div class="flex justify-between pb-6">
+            <span class="material-symbols-outlined p-1 rounded">
+                account_balance
+                </span>
+            <button (click)="quitModal()">
+        <span class="material-symbols-outlined ">
+            close
+            </span>
+        </button></div>
+            <div class="description">
+                <h1 class="font-semibold">Créer une nouvelle valeur de Tva</h1>
+                <p class="font-thin">Remplire les case suivantes</p>
+            </div>
+        </div>
+  
+   <div class="contente-modal">
+    <form   class="grid grid-cols-2 gap-4 ">
+        <div class="case ">
+            <label for="" class="">Code Tva</label>
+            <input type="text" class="" formControlName="nom">
+            <span *ngIf="isAddToTvaVisible" [ngClass]="{'hidden':isAddToTvaVisible}">*Le champs est obligatoire</span>
+            <span *ngIf="isAddToTvaVisible" [ngClass]="{'hidden':isAddToTvaVisible}">*Le Nom doit etre majiscule ne contiet pas des accent ou des tiré</span>
+            <span *ngIf="isAddToTvaVisible" [ngClass]="{'hidden':isAddToTvaVisible}">*Le Nom ne doit pas passé 20 caractére</span>
+        </div>
+        <div class="case">
+            <label for="">Valeur de Tva</label>
+            <input type="text" formControlName="ice">
+            <span *ngIf="isAddToTvaVisible" [ngClass]="{'hidden':isAddToTvaVisible}">*Le champs est obligatoire</span>
+            <span *ngIf="isAddToTvaVisible" [ngClass]="{'hidden':isAddToTvaVisible}">*L'Ice ne doit pas passé 20 caractére et pas moins de 14 caractére</span>
+        </div>
+       
+   
+<div class="col-span-2 mb-2">
+    <div class="flex justify-between">
+    <button class="rounded bg-white w-72  h-9 border font-semibold" type="submit" (click)="quitModal()">Annuler</button>
+    <button class="rounded bg-indigo-50 w-80 h-9 font-semibold text-cyan-600" type="submit" >Ajouter </button>
+</div>
+</div>
+
+
+    </form>
+   </div>
+    
+    </div>
+
+</div>
+

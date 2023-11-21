@@ -9,6 +9,7 @@ import { SignupComponent } from './layout/authen/signup/signup.component';
 import { ForgetPasswordComponent } from './layout/authen/forget-password/forget-password.component';
 import { FactureComponent } from './App-Modules/Vente/Facture/facture.component';
 import { DevisComponent } from './App-Modules/Vente/devis/devis.component';
+import { ClientComponent } from './App-Modules/Client/client/client.component';
 
 
 const routes: Routes = [
@@ -20,7 +21,8 @@ const routes: Routes = [
   {path:'article',component:ArticleComponent},
   {path:'caractere',component:ArticledesComponent},
   {path:'facture',component:FactureComponent},
-  {path:'devis',component:DevisComponent}
+  {path:'devis',component:DevisComponent},
+  {path:'client',component:ClientComponent}
 ];
 
 @NgModule({

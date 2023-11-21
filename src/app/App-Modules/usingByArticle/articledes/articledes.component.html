@@ -22,7 +22,7 @@
     <div class="bg-gray-300 p-3 rounded h-64">
         <div class="header flex justify-between">
             <h3 class="border-2 p-2 font-bold rounded-lg">TVA</h3>
-            <button class="bg-slate-500 hover:bg-slate-600 w-28 rounded-lg font-semibold">Ajouter</button>
+            <button class="bg-slate-500 hover:bg-slate-600 w-28 rounded-lg font-semibold" (click)="isAddToTvaVisible=!isAddToTvaVisible">Ajouter</button>
         </div>
         <div class="relative m-3 mb-14"><input type="text" class="border-2 w-64 h-8 rounded right-0 absolute placeholder:italic placeholder:text-slate-400  rounded-md py-2 pl-3 pr-3 shadow-sm focus:outline-none focus:ring-gray-500 focus:ring-1 sm:text-sm" placeholder="chercher votre Tva" name="search"/></div>
         <div class="content mt-10 px-4 overflow-auto">
@@ -41,6 +41,46 @@
             </ng-container>
         </div>
     </div>
-    <div class=""></div>
-    <div class=""></div>
+    <div class="bg-gray-300 p-3 rounded">
+        <div class="header flex justify-between">
+            <h3 class="border-2 p-2 font-bold rounded-lg">Les Agences</h3>
+            <button class="bg-slate-300 hover:bg-slate-400 w-28 rounded-lg font-semibold" (click)="isAddModalAgenceVisible=!isAddModalAgenceVisible">Ajouter</button>
+        </div>
+        <div class="relative m-3 mb-14"><input type="text" class="border-2 w-64 h-8 rounded right-0 absolute placeholder:italic placeholder:text-slate-400  rounded-md py-2 pl-3 pr-3 shadow-sm focus:outline-none focus:ring-gray-500 focus:ring-1 sm:text-sm" placeholder="chercher votre Agence" name="search"/></div>
+        <div class="content mt-10 px-4 overflow-auto">
+            <ng-container *ngFor="let agence of agences">
+                <div class="flex justify-between font-medium ">
+                    <span>{{agence.name}}</span>
+                    <button>
+                    <span class="material-symbols-outlined">
+                        chevron_right
+                        </span>
+                    </button>
+                        
+                </div>
+            </ng-container>
+        </div>
+    </div>
+    <div class="bg-gray-200 p-3 rounded">
+        <div class="header flex justify-between">
+            <h3 class="border-2 p-2 font-bold rounded-lg">Mode De Payment</h3>
+            <button class="bg-slate-300 hover:bg-slate-400 w-28 rounded-lg font-semibold">Ajouter</button>
+        </div>
+        <div class="relative m-3 mb-14"><input type="text" class="border-2 w-64 h-8 rounded right-0 absolute placeholder:italic placeholder:text-slate-400  rounded-md py-2 pl-3 pr-3 shadow-sm focus:outline-none focus:ring-gray-500 focus:ring-1 sm:text-sm" placeholder="chercher votre Agence" name="search"/></div>
+        <div class="content mt-10 px-4 overflow-auto">
+            <ng-container *ngFor="let mode of modes">
+                <div class="flex justify-between font-medium ">
+                    <span>{{mode.name}}</span>
+                    <button>
+                    <span class="material-symbols-outlined">
+                        chevron_right
+                        </span>
+                    </button>
+                        
+                </div>
+            </ng-container>
+        </div>
+    </div>
 </div>
+<app-add-modal-agence [isAddModalAgenceVisible]="isAddModalAgenceVisible"></app-add-modal-agence>
+<app-tva-modal [isAddToTvaVisible]="isAddToTvaVisible"></app-tva-modal>

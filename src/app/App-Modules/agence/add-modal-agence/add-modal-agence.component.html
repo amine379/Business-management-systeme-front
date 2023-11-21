@@ -1,0 +1,48 @@
+<div class="modal-background bg-black bg-opacity-50 fixed inset-0 overflow-y-auto" 
+[hidden]="!isAddModalAgenceVisible"  (click)="quitModal()">
+
+    <div class="modal-container w-2/4 mx-auto  bg-white my-28 px-8 py-1 rounded  " (click)="stopClosingModal($event)">
+  
+    <div class="header-modal ">
+        <div class="flex justify-between pb-6">
+        <span class="material-symbols-outlined border p-1 rounded">
+            apartment
+            </span>
+            <button (click)="quitModal()">
+        <span class="material-symbols-outlined ">
+            close
+            </span>
+        </button></div>
+            <div class="description">
+                <h1 class="font-semibold">Créer une nouvelle agence</h1>
+                <p class="font-thin">Remplire les case suivantes</p>
+            </div>
+        </div>
+  
+   <div class="contente-modal">
+    <form (ngSubmit)="onSubmit()" class="grid grid-cols-2 gap-4 ">
+        <div class="case my-7   flex flex-col justify-center">
+            <label for="name" class="font-semibold">Nom d'Agence</label>
+            <input type="text" class="border rounded h-10 focus:border-sky-500 focus:ring-sky-500  focus:ring-1 focus:border-blue-400" name="name" placeholder="le nom d'agence ">
+            <span *ngIf="isAddModalAgenceVisible" [ngClass]="{'hidden':isAddModalAgenceVisible}">*Le champs est obligatoire</span>
+            <span *ngIf="isAddModalAgenceVisible" [ngClass]="{'hidden':isAddModalAgenceVisible}">*Le Nom doit etre majiscule ne contiet pas des accent ou des tiré</span>
+            <span *ngIf="isAddModalAgenceVisible" [ngClass]="{'hidden':isAddModalAgenceVisible}">*Le Nom ne doit pas passé 20 caractére</span>
+        </div>
+       
+    
+<div class="col-span-2 mb-2">
+    <div class="flex justify-between">
+    <button class="rounded bg-white w-72  h-9 border font-semibold" type="submit" (click)="quitModal()">Annuler</button>
+    <button class="rounded bg-indigo-50 w-80 h-9 font-semibold text-cyan-600" type="submit" >Ajouter </button>
+</div>
+</div>
+
+
+    </form>
+   </div>
+    
+    </div>
+
+</div>
+
+

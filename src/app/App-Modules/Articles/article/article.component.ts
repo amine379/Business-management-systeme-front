@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Article } from 'src/app/models/article/article';
+import { ArticleService } from 'src/app/services/article/article.service';
 import * as XLSX from 'xlsx';
 
 @Component({
@@ -6,10 +8,19 @@ import * as XLSX from 'xlsx';
   templateUrl: './article.component.html',
   styleUrls: ['./article.component.css']
 })
-export class ArticleComponent {
+export class ArticleComponent implements OnInit {
+ allArticles!:Article[];
+  constructor(private articleService:ArticleService){
+  }
+  ngOnInit(): void {
+    this.loadArticle();
+  }
   public isAddToArticleVisible: boolean=false ;
   modalVisible(){
    this.isAddToArticleVisible=!this.isAddToArticleVisible;
+  }
+  loadArticle(){
+    this.articleService.getPagination(0,10).subscribe(data=>this.allArticles=data);
   }
   exportToExcel(): void {
     const table = document.getElementById('my-table'); // Replace 'my-table' with the ID of your table
@@ -18,4 +29,5 @@ export class ArticleComponent {
     XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
     XLSX.writeFile(wb, 'BMSbyAmine.xlsx'); // You can change the file name as needed
   }
+
 }

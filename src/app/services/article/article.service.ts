@@ -12,4 +12,8 @@ export class ArticleService {
   getAllArticles():Observable<Article[]>{
     return this.http.get<Article[]>(this.apiUrl)
   }
+  getPagination(offset: number, pageSize: number): Observable<any> {
+    const url = `${this.apiUrl}/pagination/${offset}/${pageSize}`;
+    return this.http.get(url);
+  }
 }

@@ -1,9 +1,9 @@
-<div class="fournisseur-table m-5 bg-slate-50 ">
+<!-- <div class="fournisseur-table m-5 bg-slate-50 ">
     <div class="he p-4  flex justify-between" >
-        <h2 class="font-medium font-serif text-2xl">Fournisseur</h2>
+        <h2 class="font-medium font-serif text-2xl">Agences</h2>
         <button class="bg-sky-600 text-white font-medium w-40 rounded-md" (click)="modalVisible()">Ajouter</button>
     </div>
-    <div class="table-header mt-20 flex justify-between">
+    <div class="table-header mt-20 flex justify-between"> -->
       <!-- <div class="filtre flex justify-between ">
        <div class="bg-white flex justify-around w-32 border-2 border-inherit rounded mx-2"> 
         <button class=" font-semibold text-sm">Active</button>
@@ -22,20 +22,17 @@
         <span class="material-symbols-outlined text-lg">close</span>
     </div>
       </div >  -->
-      <div></div>
+      <!-- <div></div>
       <input type="text" placeholder="search" class="border-2 border-inherit rounded w-64 " [(ngModel)]="searchFournissuer" (input)="filterFournisseur()"> 
     </div>
     <div class="mt-7">
         <table class="border-collapse w-full  ">
             <thead>
               <tr class="border-t-2 ">
-                <th class="font-semibold text-sm">Nom</th>
-                <th class="font-semibold text-sm">Status</th>
-                <th class="font-semibold text-sm">Ice</th>
-                <th class="font-semibold text-sm">Adress</th>
-                <th class="font-semibold text-sm">Agence</th>
-                <th class="font-semibold text-sm">Telephone</th>
-                <th class="font-semibold text-sm">Receptions</th>
+                <th class="font-semibold text-sm">Nom d'Agence</th>
+                <th class="font-semibold text-sm">Articles</th>
+                <th class="font-semibold text-sm">Fournisseurs</th>
+                <th class="font-semibold text-sm">Clients</th>
               </tr>
             </thead>
             <tbody>
@@ -56,13 +53,11 @@
                   </span></td>
                 <td >+212-{{fournisseur.telephone}}</td>
                 <td>
-                  <span class="material-symbols-outlined text-orange-500 cursor-pointer pr-1">
-                    arrow_forward
-                    </span>
+                
                 </td>
               </tr>
             </tbody>
           </table>
     </div>
 </div>
-<app-add-fournisseur-modal [isAddToFournisseurVisible]="isAddToFournisseurVisible"></app-add-fournisseur-modal>
+<app-add-fournisseur-modal [isAddToFournisseurVisible]="isAddToFournisseurVisible"></app-add-fournisseur-modal> -->

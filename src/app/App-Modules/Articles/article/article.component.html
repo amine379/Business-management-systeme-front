@@ -63,31 +63,27 @@
     <table class="table-auto border-collapse w-full" id="my-table">
         <thead>
           <tr class="border-t-2">
-            <th>Reference</th>
             <th>Designation</th>
-            <th>Situation</th>
-            <th>Famille</th>
-            <th>Sous Famille</th>
             <th>Prix d'achat</th>
             <th>Prix de vente</th>
+            <th>Unite</th>
+            <th>Tva</th>
+            <th>Stock</th>
             <th>Fournisseur</th>
             <th>Agence</th>
-
-
-
           </tr>
         </thead>
         <tbody>
-          <tr class="border-t-2">
-            <td>2</td>
-            <td>2</td>
-            <td>3</td>
-            <td>4</td>
-            <td>4</td>
-            <td>5</td>
-            <td>6</td>
-            <td>7</td>
-            <td>8</td>
+          <tr class="border-t-2" *ngFor="let article of allArticles">
+            <td>{{article.name}}</td>
+            <td>{{article.purchase_price}}</td>
+            <td>{{article.selling_price}}</td>
+            <td>unite</td>
+            <td>{{article.tva}}</td>
+            <td>{{article.stock}}</td>
+            <td>ff</td>
+            <td>agg</td>
+           
           </tr>
         </tbody>
       </table>

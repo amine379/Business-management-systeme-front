@@ -47,7 +47,10 @@ import { DevisComponent } from './App-Modules/Vente/devis/devis.component';
 import { TableModule } from 'primeng/table';
 import { CheckboxModule } from 'primeng/checkbox';
 import { AddFactureComponent } from './App-Modules/Vente/Facture/add-facture/add-facture.component';
-
+import { ButtonModule } from 'primeng/button';
+import { ClientComponent } from './App-Modules/Client/client/client.component';
+import { AgenceComponent } from './App-Modules/agence/agence.component';
+import { AddModalAgenceComponent } from './App-Modules/agence/add-modal-agence/add-modal-agence.component'
 
 @NgModule({
   declarations: [
@@ -85,7 +88,10 @@ import { AddFactureComponent } from './App-Modules/Vente/Facture/add-facture/add
     ReceptionDetailsComponent,
     FactureComponent,
     DevisComponent,
-    AddFactureComponent
+    AddFactureComponent,
+    ClientComponent,
+    AgenceComponent,
+    AddModalAgenceComponent
 
     
 

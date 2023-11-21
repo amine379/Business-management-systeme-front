@@ -8,6 +8,7 @@ import { Agence } from 'src/app/models/agence/agence';
 export class AgenceService {
 apiUrl='http://localhost:8080/api/agence';
   constructor(private http:HttpClient) { }
+  
   getAllAgences(): Observable<Agence[]>{
     return this.http.get<Agence[]>(this.apiUrl)
   }

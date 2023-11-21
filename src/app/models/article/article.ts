@@ -7,7 +7,7 @@ export class Article{
  purchase_price!:number;
 selling_price!:number;
 tva!:Tva;
- Stock!:number;
+ stock!:number;
  unite!:Unite;
 situation!:boolean;
 id_unite!:number;

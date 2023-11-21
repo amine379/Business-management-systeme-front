@@ -27,12 +27,12 @@
 					</span>
 				<h3 class="flex items-center flex items-center justify-between w-full">
 					Achat
-				 	<span class="material-symbols-outlined">
+				 	<span class="material-symbols-outlined" (click)="achatExpanded=!achatExpanded" >
 						expand_more
 						</span>
 				</h3>
 			</div>
-			<div class="pl-5">
+			<div class="pl-5" [hidden]="!achatExpanded">
 				<a routerLink="/reception">
 			<div class="sidebar-menu-item flex flex-row  gap-2 pr-1 py-3">
 				<span class="material-symbols-outlined">
@@ -61,21 +61,20 @@
 			</a>
 		
 		
-			<a href="">
+			<a >
 			<div class="sidebar-menu-item flex flex-row  gap-2 pr-1 py-3">
 				<span class="material-symbols-outlined">
 					sell
 					</span>
 				<h3 class="flex items-center flex items-center justify-between w-full">
 					Vente
-					<span class="material-symbols-outlined">
+					<span class="material-symbols-outlined" (click)="venteExpanded=!venteExpanded">
 						expand_more
 						</span>
 				</h3>
 			</div>
-			<div class="pl-5">
-				<a routerLink="/reception">
-		</a>
+			<div class="pl-5" [hidden]="!venteExpanded">
+			
 		<a routerLink="/facture">
 			<div class="sidebar-menu-item flex flex-row  gap-2 pr-1 py-3">
 				<span class="material-symbols-outlined">
@@ -118,13 +117,13 @@
 					</span>
 				<h3 class="flex items-center flex items-center justify-between w-full">
 					Articles
-					<span class="material-symbols-outlined">
+					<span class="material-symbols-outlined" (click)="articleExpendend=!articleExpendend">
 						expand_more
 						</span>
 				</h3>
 				</div>
 				
-				<div class="pl-5">
+				<div class="pl-5" [hidden]="!articleExpendend">
 					<a routerLink="/article">
 				<div class="sidebar-menu-item flex flex-row  gap-2 pr-1 py-3">
 					<span class="material-symbols-outlined">
@@ -141,11 +140,19 @@
 					<h3>Caracteristique</h3>
 				</div>
 				</a>
+				<a routerLink="/">
+					<div class="sidebar-menu-item flex flex-row  gap-2 pr-1 py-3">
+						<span class="material-symbols-outlined">
+							apartment
+							</span>
+						<h3>Agence</h3>
+					</div>
+				</a>
 				</div>
 			
 			
 	
-			<a href="">
+			<a routerLink="/client">
 			<div class="sidebar-menu-item flex flex-row  gap-2 pr-1 py-3">
 				<span class="material-symbols-outlined">
 					groups

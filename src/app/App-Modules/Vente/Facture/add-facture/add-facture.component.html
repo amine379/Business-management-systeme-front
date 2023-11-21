@@ -6,34 +6,85 @@
         </div>
         <span class="font-semibold text-2xl">Facture</span>
     </div>
- <form [formGroup]="factureForm">
+ <form [formGroup]="factureForm" (ngSubmit)="onSubmit()">
     <div class="info-facture flex justify-between mt-4">
         <div class="info-client flex flex-col ">
+            
             <div class="flex">
                 <label for="Client" class="font-medium w-40" >Client:</label>
-            <input type="text" name="Client" id="Client" class="border border-solid border-black hover:border-2 rounded-sm h-5">
+            <!-- <input type="text" 
+            name="Client" id="Client"
+             class="border border-solid border-black hover:border-2 rounded-sm h-5"
+             formControlName="client"> -->
+             <input type="text" 
+             *ngIf="customerChosen === undefined ; else clientNameChosed "
+               name="Client" id="Client"
+               class="border border-solid border-black hover:border-2 rounded-sm h-5"
+             (input)="findByName(clientName.value)"
+              #clientName >
+
+             <div class="label flex flex-col border-2 border-lime-950 m-2 p-2 overflow-y-auto h-32 "
+             *ngIf="customerChosen === undefined ">
+                <label *ngFor="let client of listOfClientFiltred ">
+                  <input type="radio" name="client" (click)="choseClient(client)" >
+                  {{client.nom}}
+              </label>
+               </div>
+             <ng-template #clientNameChosed>
+                <input type="text" 
+                name="Client" id="Client"
+                 class="border border-solid border-black hover:border-2 rounded-sm h-5"
+                 [value]="customerChosen!.nom">
+             </ng-template>
             
         </div>
         <div class="flex">
             <label for="Ice" class="font-medium w-40">ICE:</label>
-            <input type="text" name="Ice" id="Ice" class="border border-solid border-black hover:border-2 rounded-sm h-5">
+            <!-- <input 
+            type="text" name="Ice" id="Ice" 
+            class="border border-solid border-black hover:border-2 rounded-sm h-5"
+            formControlName="ice"> -->
+            <input 
+            *ngIf="customerChosen === undefined ; else clientIdChosed "
+            type="text" name="Ice" id="Ice" 
+            class="border border-solid border-black hover:border-2 rounded-sm h-5"
+            (input)="findByIce(clientIce.value)" #clientIce>
+            <div class="label flex flex-col border-2 border-lime-950 m-2 p-2 overflow-y-auto h-32 "
+             *ngIf="customerChosen === undefined ">
+                <label *ngFor="let client of listOfClientFiltred ">
+                  <input type="radio" name="client" (click)="choseClient(client)" >
+                  {{client.ice}}
+              </label>
+               </div>
+            <ng-template #clientIdChosed>
+                <input type="text" 
+                name="Client" id="Client"
+                 class="border border-solid border-black hover:border-2 rounded-sm h-5"
+                 [value]="customerChosen!.ice">
+             </ng-template>
            
         </div>           
         </div >
         <div class="info-facture flex flex-col">
             <div class="flex"> 
              <label for="Reference" class="font-medium w-40">Reference:</label>
-             <input type="text" name="Reference" id="Reference" class="border border-solid border-black hover:border-2 rounded-sm h-5">
+             <input type="text" name="Reference" id="Reference" 
+             class="border border-solid border-black hover:border-2 rounded-sm h-5"
+             formControlName="referance">
             </div>
             <div class="flex">  
             <label for="Date-Facture" class="font-medium w-40">Date Facture:</label>
-                 <input type="date" name="Date" id="Date-Facture" class="border border-solid border-black hover:border-2 rounded-sm h-5">
+                 <input type="date" name="Date" id="Date-Facture" 
+                 class="border border-solid border-black hover:border-2 rounded-sm h-5"
+                 formControlName="dateFacture">
                 </div>
             <div class="flex">
                 <label for="payment" class="font-medium w-40"> Mode Payment:</label>
-                <select id="payment" name="payment" class="border border-solid border-black hover:border-2 rounded-sm h-5">
-                    <option value="Espece">Espece</option>
-                    <option value="Par cheque">Par Cheque</option>
+                <select id="payment" name="payment" class="border border-solid border-black hover:border-2 rounded-sm h-5"
+                formControlName="modePayment">
+                <ng-container *ngFor="let mode of listOfAllPaymentMode">
+                    <option value="mode">{{mode.name}}</option>
+                </ng-container>
                     
                   </select>
           
@@ -42,33 +93,68 @@
         </div>
         </div>
     </div>
-        <div class="listOfArticles mt-4 ">
+        <div class="listOfArticles mt-7 ">
 <table formArrayName="articleList" class="table-auto w-full border-collapse border-2 border-black ">
     <thead>
-        <tr>
-            <td class="border ">#</td>
-            <td class="border ">Description</td>
-            <td class="border ">Quantite</td>
-            <td class="border ">Prix Unitaire</td>
-            <td class="border ">Tva</td>
-            <td class="border ">Montant</td>
+        <tr class="border">
+            <td class="border border-slate-300  justify-items-center"> <span class="text-base font-medium ">#</span> </td>
+            <td class="border border-slate-300"> <span class="text-base font-medium ">Description</span></td>
+            <td class="border border-slate-300"><span class="text-base font-medium ">Quantite</span> </td>
+            <td class="border border-slate-300"><span class=" text-base font-medium "> Prix Unitaire</span> </td>
+            <td class="border border-slate-300"><span class="text-base font-medium ">Tva</span> </td>
+            <td class=""><span class="text-base font-medium ">Montant</span></td>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let articl of article.controls;let i=index" [formGroupName]="i" class="pb-1">
-            <td>{{i+1}}</td>
+        <tr *ngFor="let articl of article.controls;let i=index" [formGroupName]="i" class="py-1">
+            
+            <td class="w-12 "><span class="font-semibold flex justify-center">{{i+1}}</span></td>
+           <td class="flex flex-col"> 
+
+            <input type="text" class="form-control border w-full" 
+            (input)="findArticleByName(designationArticle.value)"
+             #designationArticle
+             [value]="articl.get('article')!.value.name==undefined ?'': articl.get('article')!.value.name "
+             >
+            
+               <!-- [value]="articleChosen!=undefined ?  articl.get('article') : '' " -->
+            <div class="label flex flex-col border-2 border-lime-950 m-2 p-2 overflow-y-auto h-32 "
+             *ngIf="listOfArticleFilred!= undefined && articl.get('article')!.value=='' " >
+               <label *ngFor="let article of listOfArticleFilred ">
+                 <input type="radio" name="article" (click)="choseArticle(article,i)" >
+                 {{article.name}}
+             </label>
+              </div>
+        </td>
            <td>
-            <input type="text" class="form-control" formControlName="id" placeholder="id"></td>
-           <td><input type="text" class="form-control" formControlName="quantity"></td>
-           <td><input  type="text" class="form-control" formControlName="sellingPrice"></td>
+            <input 
+            type="text" class="form-control border w-full"
+             formControlName="quantity" 
+             (input)="functa(quantiteValue.value)"
+              #quantiteValue>
+            </td>
+           <td>
+            <input  type="text" class="form-control" class="form-control border w-full"
+             formControlName="sellingPrice" [value]="articl.get('article')!.value.selling_price">
+            </td>
            <td> 
-            <select class="form-control" formControlName="tva">
+            <!-- <input  type="text" class="form-control" class="form-control border w-full"
+              [value]="articl.get('article')!.value!.tva"
+              > -->
+            <select class="form-control" >
             <option [value]="0.5" >5%</option>
             <option [value]="0.5" >15%</option>
             <option [value]="0.5" >25%</option>
         </select>
     </td>
-    <td><input type="text" [value]=""></td>
+    <td><input type="text" 
+        formControlName="tva"
+        [value]="(articl.get('quantity') === null || articl.get('quantity') === undefined || 
+        articl.get('article') === null || articl.get('article') === undefined ||
+        articl.get('article')!.value.selling_price === null || 
+        articl.get('article')!.value.selling_price === undefined) 
+        ? '' 
+        : (articl.get('quantity')!.value * articl.get('article')!.value.selling_price)" ></td>
 <td><button class="hover:bg-red-300 rounded-sm w-7 shadow-xl  "><span class="font-semibold text-white">X</span></button></td>
 
         </tr>
@@ -82,14 +168,43 @@
     </tfoot>
 </table>
         </div>
- </form>
- <div class="footer">
-    <div class="remarque"></div>
-    <div class="calcule">
-
-    </div>
+ 
+ <div class="footer mt-4">
+    <div class="footer-table flex justify-between m-3">
+        <div class="remarque flex items-stretch"><label for="remarque-recep " class="font-semibold self-center pr-2 pb-7 ">Remarque</label> <textarea class="border self-auto h-40 w-64"></textarea></div>
+        <div class="calcule-recep flex flex-col">
+         <div class="pb-3 flex"> <label for="recep-ref" class="pr-1 w-28 font-semibold">Total Ht</label> <input type="text" name="recep-ref" class="border rounded"></div>
+          <div class="pb-3 flex"><label for="recep-ref" class="pr-1 w-28 font-semibold">Remise</label> <input type="text" name="recep-ref" class="border rounded"></div>
+          <div class="pb-3 flex"><label for="recep-ref" class="pr-1 w-28 font-semibold">TVA</label> <input type="text" name="recep-ref" class="border rounded"></div>
+         <div class="pb-3 flex"> <label for="recep-ref" class="pr-1 w-28 font-semibold">TTC</label> <input type="text" name="recep-ref" class="border rounded"></div>
+        </div>
+      </div>
  </div>
-
+<div class="button display flex flex-row">
+    <button type="submit" class="bg-indigo-500 text-white font-medium w-40 rounded-md mx-0.5 hover:bg-sky-800">
+     <div class="flex justify-center"> 
+         <span class="material-symbols-outlined">
+            bookmark
+            </span>
+        Enregistré
+    </div> 
+    </button>
+    <button class="bg-indigo-400  text-white font-medium w-40 h-11 rounded-md mx-0.5 hover:bg-sky-600">
+        <div class="flex justify-center w-full">
+            <span class="material-symbols-outlined">
+            download
+            </span>Enr & Télecharger
+        </div>
+        </button>
+    <button class="bg-indigo-300 text-white font-medium w-40 rounded-md mx-0.5 hover:bg-red-400">
+        <div class="flex justify-center">
+            <span class="material-symbols-outlined">
+            cancel
+            </span>Annuler</div>
+        </button>
+    
+</div>
+</form>
 </div>
 
 
