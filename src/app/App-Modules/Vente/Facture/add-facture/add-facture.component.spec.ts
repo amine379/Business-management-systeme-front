@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AddFactureComponent } from './add-facture.component';
+import { AddFactureComponent } from './add-facture.component;
 
 describe('AddFactureComponent', () => {
   let component: AddFactureComponent;

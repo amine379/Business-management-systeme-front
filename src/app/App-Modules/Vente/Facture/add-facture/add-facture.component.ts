@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, DoCheck, OnInit, SimpleChanges } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ModePayment } from 'src/app/models/Vente/modePayment.models';
 import { Article } from 'src/app/models/article/article';
@@ -12,14 +12,16 @@ import { ModePaymentService } from 'src/app/services/vente/mode-payment.service'
   templateUrl: './add-facture.component.html',
   styleUrls: ['./add-facture.component.css']
 })
-export class AddFactureComponent implements OnInit {
+export class AddFactureComponent implements OnInit, DoCheck   {
   // addede to updated 
+  clients:boolean=false;
   customerChosen:Client | undefined;articleChosen:Article|undefined;
   listOfAllCllient!:Client[];
   listOfAllPaymentMode!:ModePayment[];
   listOfClientFiltred!:Client[];
   listOfAllArticles!:Article[];
   listOfArticleFilred:Article[] | undefined;
+  selectedClient!:Client;
   findByIce(ice:string){
 this.listOfClientFiltred=this.listOfAllCllient.filter(client=>client.ice.toLocaleLowerCase().includes(ice.toLocaleLowerCase()))
   }
@@ -39,6 +41,9 @@ this.listOfArticleFilred=this.listOfAllArticles.filter(article=>article.name.toL
     ){
    
   }
+  
+
+
   factureForm!:FormGroup;
   ngOnInit(): void {
     this.factureForm= new FormGroup({
@@ -49,9 +54,11 @@ this.listOfArticleFilred=this.listOfAllArticles.filter(article=>article.name.toL
       modePayment:this.builder.control(''),
       articleList: this.builder.array([])
     });
+   
     this.loadListOfClient();
     this.loadListOfPaymentMode();
-    this.loadListOfArticle()
+    this.loadListOfArticle();
+   
   }
  
   formvariant !: FormArray<any>;
@@ -62,66 +69,126 @@ get article(){
 addVariant(){
 this.formvariant= this.factureForm.get("articleList") as  FormArray;
 this.formvariant.push(this.generateRow());
-
-
 }
 generateRow(){
 return this.builder.group({
   article:this.builder.control(''),
   quantity:this.builder.control(''),
-  sellingPrice:this.builder.control(''),
+  prxiTtc:this.builder.control(''),
+  prixHt:this.builder.control(''),
   tva:this.builder.control(''),
 })
 }
 onSubmit(){
-  console.log("Hello from onSubmit ..");
-  if(this.factureForm.valid){
-    console.log(this.factureForm.value);
-  }
+ 
 }
 loadListOfClient(){
   this.clientService.getAllclient().subscribe(data=>
     this.listOfAllCllient=data
     )
-   
+    
 }
 loadListOfPaymentMode(){
   this.modePaymentService.getAllPaymenntMode().subscribe(data=>
     this.listOfAllPaymentMode=data)
 }
-loadListOfArticle(){
-  this.articleService.getAllArticles().subscribe(data=>
-    this.listOfAllArticles=data)
+loadListOfArticle(): void{
+  this.articleService.getAllArticles().subscribe(
+    data => this.listOfAllArticles = data
+  );
+    
+}
+setClientToForm(client:Client)
+{
+  this.factureForm.controls['client'].patchValue(client.nom);
+  this.factureForm.controls['ice'].patchValue(client.ice);
+console.log(this.factureForm.value);
+}
+clientIsEmpty():boolean{
+  const clientValue = this.factureForm.get('client')?.value;
+    return clientValue === '' || clientValue === null || clientValue === undefined;
 }
 
-choseClient(client:Client){
-  this.customerChosen=client;
-  this.factureForm.patchValue(
-    {client:client}
+sumPrixHt: number = 0;
+calculateSum() {
+  this.sumPrixHt = this.article.controls
+    .map((a: any) => a.get('prixHt')!.value || 0)
+    .reduce((acc, value) => acc + value, 0);
+    console.log(this.sumPrixHt);
+    console.log(this.factureForm)
+}
+// calculTva(){
+//   this.article.controls.map((a:any)=>a.get('prixHt')*)
+// }
+hii(){
+  console.log("mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm"+this.factureForm.value);
+  console.log(this.factureForm.value);
+}
+
+ngDoCheck() {
+this.calculateSum();
+}
+removeVariant(index: number) {
+  this.formvariant = this.factureForm.get("articleList") as FormArray;
+  this.formvariant.removeAt(index);
+}
+//(input)="articl.patchValue({prxiTtc:articl.get('prixHt')!.value * articl.get('article')!.value.tva.value})"
+patchValueOfPrixHt(index:number){
+  const articleList=this.factureForm.get("articleList") as FormArray;
+  articleList.at(index).patchValue(
+    {prxiTtc:
+      articleList.get('quantity')!.value * articleList.get('article')!.value.selling_price
+    }
   )
-this.listOfClientFiltred=[];
-  
 }
-choseArticle(article:Article,i:number){
-this.articleChosen=article;
-
-const articleList=this.factureForm.get("articleList") as FormArray;
-articleList.at(i).patchValue({
-  article:article
-})
-this.listOfArticleFilred=undefined;
-console.log(this.listOfArticleFilred);
-
-}
-updateClientForm(){
-  this.factureForm.patchValue(
-    {client:null}
+patchValueOfTva(index:number){
+  const articleList=this.factureForm.get("articleList") as FormArray;
+  articleList.at(index).patchValue(
+    {
+      tva:articleList.get('article')!.value.tva.value
+    }
   )
-  this.customerChosen=undefined;
+
 }
-functa(x:any){
-  console.log("********************************")
-  console.log(this.factureForm);
-  console.log("le any"+x)
+patchValueOfPrixTtc(index:number){
+  const articleList=this.factureForm.get("articleList") as FormArray;
+  articleList.at(index).patchValue(
+    {
+      prxiTtc:articleList.get('prixHt')!.value*(1+articleList.get('article')!.value.tva.value)
+    }
+  )
+}
+
+ /*asyncPatchValues(index:number) {
+  return new Promise((resolve, reject) => {
+    // Function 1: patchValueOfPrixHt
+    this.patchValueOfPrixHt(index);
+    
+    // Assuming patchValueOfPrixHt is synchronous, we can proceed to the next function
+
+    // Function 2: patchValueOfTva
+    try {
+      this.patchValueOfTva(index);
+    } catch (error) {
+      reject(error);
+      return;
+    }
+
+    // Function 3: patchValueOfPrixTtc
+    try {
+      this.patchValueOfPrixTtc(index);
+    } catch (error) {
+      reject(error);
+      return;
+    }
+
+    resolve('All patch operations completed successfully');
+  });
+  console.log(this.factureForm)
+}*/
+
+
+patchValueOfPrixHtAndHt(i:number){
+  const articleList=this.factureForm.get("articleList") as FormArray;
 }
 }
